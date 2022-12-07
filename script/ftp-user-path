@@ -1,0 +1,10 @@
+#!/bin/bash
+
+path="/staging-dupont-ftp/FTP_dealers"
+cat ./list-user.txt | while read line
+do
+echo $line > ./tmp.txt
+i=$(cat ./tmp.txt | awk  '{print $1}')
+
+echo $path/$i
+done

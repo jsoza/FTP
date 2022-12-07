@@ -1,0 +1,8 @@
+#!/bin/bash
+
+i="Doug.Martin"
+echo $i
+userdel $i
+rm -rf /staging-dupont-ftp/FTP_dealers/$i
+rm -rf /home/$i
+sudo systemctl reload vsftpd

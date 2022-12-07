@@ -1,0 +1,13 @@
+#!/bin/bash
+
+path="/production-dupont-ftp/FTP_dealers"
+i="Doug.Martin"
+#i="FTP_dealers"
+useradd -g ftp -m $i -p $i
+mkdir $path/$i
+chown -R $i:root $path/$i
+usermod -d $path/$i $i
+rm -rf /home/$i
+ln -s $path/$i /home/$i
+echo $i | sudo tee -a /etc/vsftpd.userlist
+sudo systemctl reload vsftpd
